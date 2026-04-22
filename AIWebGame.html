@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Riddle Game - First to 5</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #7c3aed, #4f46e5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+    }
+
+    .card {
+      background: rgba(0,0,0,0.45);
+      padding: 25px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 520px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .scoreboard {
+      display: flex;
+      justify-content: space-between;
+      margin: 15px 0;
+      font-size: 18px;
+    }
+
+    .riddle {
+      font-size: 18px;
+      margin: 20px 0;
+      min-height: 60px;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 15px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      background: #111827;
+      color: white;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #374151;
+    }
+
+    .message {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .win {
+      color: #22c55e;
+    }
+
+    .lose {
+      color: #ef4444;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Riddle Battle (First to 5)</h1>
+
+    <div class="scoreboard">
+      <div>You: <span id="userScore">0</span></div>
+      <div>Computer: <span id="cpuScore">0</span></div>
+    </div>
+
+    <div class="riddle" id="riddle">Press Start Game to begin!</div>
+
+    <input type="text" id="answerInput" placeholder="Type your answer here" />
+
+    <button id="gameBtn" onclick="handleGameButton()">Start Game</button>
+    <button onclick="submitAnswer()">Submit Answer</button>
+    <button onclick="generateRiddle()">Next Riddle</button>
+
+    <div class="message" id="message"></div>
+  </div>
+
+  <script>
+    const riddles = [
+      { riddle: "I speak without a mouth and hear without ears. What am I?", answer: "Echo" },
+      { riddle: "The more you take, the more you leave behind. What am I?", answer: "Footsteps" },
+      { riddle: "I have keys but no locks. What am I?", answer: "Keyboard" },
+      { riddle: "What gets wetter the more it dries?", answer: "Towel" },
+      { riddle: "I’m tall when I’m young and short when I’m old. What am I?", answer: "Candle" },
+
+      { riddle: "What has to be broken before you can use it?", answer: "Egg" },
+      { riddle: "What has hands but cannot clap?", answer: "Clock" },
+      { riddle: "What can travel around the world while staying in a corner?", answer: "Stamp" },
+      { riddle: "What has a face and two hands but no arms or legs?", answer: "Clock" },
+      { riddle: "What gets bigger the more you take away?", answer: "Hole" }
+    ];
+
+    let current = null;
+    let userScore = 0;
+    let cpuScore = 0;
+    let started = false;
+    let answered = false;
+
+    function handleGameButton() {
+      userScore = 0;
+      cpuScore = 0;
+      started = true;
+      answered = false;
+
+      document.getElementById("gameBtn").innerText = "Start Over";
+      document.getElementById("message").innerText = "Game started! Good luck.";
+      document.getElementById("message").className = "message";
+
+      updateScore();
+      generateRiddle();
+    }
+
+    function generateRiddle() {
+      if (!started) return;
+      if (userScore >= 5 || cpuScore >= 5) return;
+
+      const random = Math.floor(Math.random() * riddles.length);
+      current = riddles[random];
+      answered = false;
+
+      document.getElementById("riddle").innerText = current.riddle;
+      document.getElementById("answerInput").value = "";
+      document.getElementById("message").innerText = "";
+    }
+
+    function submitAnswer() {
+      if (!started || !current || answered) return;
+
+      const userAnswer = document.getElementById("answerInput").value.trim().toLowerCase();
+      const correct = current.answer.toLowerCase();
+
+      answered = true;
+
+      if (userAnswer === correct) {
+        userScore++;
+        document.getElementById("message").innerText = "Correct! You get a point.";
+        document.getElementById("message").className = "message win";
+      } else {
+        cpuScore++;
+        document.getElementById("message").innerText =
+          "Wrong! Correct answer: " + current.answer + ". Computer gets a point.";
+        document.getElementById("message").className = "message lose";
+      }
+
+      updateScore();
+      checkWinner();
+    }
+
+    function updateScore() {
+      document.getElementById("userScore").innerText = userScore;
+      document.getElementById("cpuScore").innerText = cpuScore;
+    }
+
+    function checkWinner() {
+      if (userScore >= 5) {
+        document.getElementById("riddle").innerText = "🎉 You Win the Game!";
+        started = false;
+      } else if (cpuScore >= 5) {
+        document.getElementById("riddle").innerText = "💻 Computer Wins the Game!";
+        started = false;
+      }
+    }
+  </script>
+
+</body>
+</html>

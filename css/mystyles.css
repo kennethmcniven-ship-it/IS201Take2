@@ -1,0 +1,68 @@
+/* General page styling */
+body {
+    background-color: #f2d8d5; /* light cream/grey */
+    color: #222222; /* soft black text */
+    font-family: 'Trebuchet MS', 'Segoe UI', Arial, sans-serif; /* casual but clean */
+    
+    display: flex;
+    justify-content: center; /* centers horizontally */
+    margin: 0;
+}
+
+/* Main container (centers all content) */
+.container {
+    width: 80%;
+    max-width: 1000px;
+}
+
+/* Header section */
+.header {
+    background-color: #ffcc00; /* LEGO yellow */
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+/* Content section */
+.content {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+/* Sidebar or extra section */
+.sidebar {
+    background-color: #e0e0e0;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+/* Footer */
+footer {
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+
+    padding: 2px 0; /* thinner */
+    
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    
+}
+
+/* Optional: links styling */
+a {
+    color: #d62828; /* LEGO red */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
