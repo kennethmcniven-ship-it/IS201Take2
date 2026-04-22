@@ -1,30 +1,30 @@
-/* General page styling */
+/* General Styling */
 body {
-    background-color: #f2d8d5; /* light cream/grey */
-    color: #222222; /* soft black text */
-    font-family: 'Trebuchet MS', 'Segoe UI', Arial, sans-serif; /* casual but clean */
+    background-color: #f2d8d5; /* Light Grey */
+    color: #222222; /*  Black text */
+    font-family: 'Trebuchet MS', 'Segoe UI', Arial, sans-serif; /* Casual  */
     
     display: flex;
-    justify-content: center; /* centers horizontally */
+    justify-content: center; 
     margin: 0;
 }
 
-/* Main container (centers all content) */
+/* Main Container  */
 .container {
     width: 80%;
     max-width: 1000px;
 }
 
-/* Header section */
+/* Header Section */
 .header {
-    background-color: #ffcc00; /* LEGO yellow */
+    background-color: #ffcc00; /* LEGO Yellow */
     padding: 20px;
     text-align: center;
     border-radius: 10px;
     margin-top: 20px;
 }
 
-/* Content section */
+/* Content Section */
 .content {
     background-color: #ffffff;
     padding: 20px;
@@ -32,7 +32,7 @@ body {
     border-radius: 10px;
 }
 
-/* Sidebar or extra section */
+/* Sidebar for 4 Styles */
 .sidebar {
     background-color: #e0e0e0;
     padding: 15px;
@@ -46,7 +46,7 @@ footer {
     color: #ffffff;
     text-align: center;
 
-    padding: 2px 0; /* thinner */
+    padding: 2px 0; 
     
     position: fixed;
     bottom: 0;
@@ -56,9 +56,9 @@ footer {
     
 }
 
-/* Optional: links styling */
+/* Links Styling */
 a {
-    color: #d62828; /* LEGO red */
+    color: #d62828; /* LEGO Red */
     text-decoration: none;
 }
 
